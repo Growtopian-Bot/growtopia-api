@@ -1,7 +1,7 @@
-const gtAPI = require('../lib/index');
+const growapi = require('../lib/index');
 
 
-gtAPI.itemInfo("Angel Wings").then(data => {
+growapi.itemInfo("Angel Wings").then(data => {
 
     /**
      * Item name has to be exact name and is case sensitive.
@@ -11,21 +11,23 @@ gtAPI.itemInfo("Angel Wings").then(data => {
     console.log(data);
 
 }).catch(err => {
-    console.log(err);
+    console.error(err);
 });
 
-gtAPI.search("ancestral").then(data => {
+growapi.search("ancestral").then(data => {
 
     console.log(data); // Returns a json with matchin item names.
 
 }).catch(err => {
-    console.log(err);
-})
-
-
-gtAPI.server().then(data => {
-    console.log(data);
+    console.error(err);
 });
+
+
+growapi.server().then(data => {
+    console.log(data);
+}).catch(err => {
+    console.error(err);
+})
 
 
 

@@ -10,15 +10,16 @@ npm install --save growapi
 ```
 
 ## :clipboard: Example
+
+- **Searching Item Information**
 ```js
 const growapi = require('growapi');
 
-#Searching Item Information
 growapi.itemInfo("Angel Wings").then(data => {
     console.log(data);
     
     /*
-    *Returns in this format:
+    Returns in this format:
     {
         description: Description of item.
         recipe: Recipe.
@@ -31,6 +32,46 @@ growapi.itemInfo("Angel Wings").then(data => {
         fullName: If item name is typed wrong and there's a suggestion it appears here.
     }
     */
+});
+```
+
+- **Searching item names matching with keyword**
+
+```js
+growapi.search("ancestral").then(data => {
+
+    console.log(data);
+    /*  Output:
+    [
+      'Ancestral Lens of Riches',
+      'Ancestral Orb of Time',
+      'Ancestral Seed of Life',
+      'Ancestral Tesseract of Dimensions',
+      'Ancestral Totem of Wisdom'
+    ]
+    */
+
+}).catch(err => {
+    console.log(err);
+})
+```
+
+- **Server Status**
+
+```js
+growapi.server().then(data => {
+    console.log(data);
+    /*  Output:
+    {
+      date: 'Aug 29',
+      time: ' 11:04:32',
+      online: 44319,
+      wotdname: 'DANCE',
+      wotdimage: 'https://www.growtopiagame.com/worlds/dance.png'
+    }
+    */
+}).catch(e => {
+    console.error(e);
 });
 ```
 

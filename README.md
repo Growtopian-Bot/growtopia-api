@@ -1,5 +1,6 @@
 # GROWAPI
 [![npm version](https://badge.fury.io/js/growapi.svg)](https://badge.fury.io/js/growapi) [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
+
 [![NPM](https://nodei.co/npm/growapi.png)](https://nodei.co/npm/growapi/) 
 
 > An unofficial Growtopia API for searching item information, server status and more...

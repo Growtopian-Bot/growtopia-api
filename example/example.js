@@ -1,12 +1,11 @@
-const growapi = require('../lib/index');
+const growapi = require('../index');
 
+growapi.itemInfo("Golden Halo").then(data => {
 
-growapi.itemInfo("Angel Wings").then(data => {
-
-    /**
-     * Item name has to be exact name and is case sensitive.
-     * Returns json of item information including sprite link, recipe, description & properties.
-     */
+    /*
+     Item name has to be exact name and is case sensitive.
+     Returns json of item information including sprite link, recipe, description & properties.
+    */
 
     console.log(data);
 

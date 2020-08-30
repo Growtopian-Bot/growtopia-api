@@ -1,6 +1,10 @@
 const scrapeIt = require('scrape-it');
 const fetch = require('node-fetch');
 
+  /**
+   * @param {String} itemname - Has to be exact name and is case sensitive.
+   */
+
 module.exports.itemInfo = itemname => {
 
     let link = `https://growtopia.wikia.com/wiki/${itemname}`;
@@ -15,7 +19,11 @@ module.exports.itemInfo = itemname => {
                 selector: 'table.content',
                 convert: x => x.replace(/\n/g, "")
             },
-            properties: "#mw-content-text > div.gtw-card.item-card > div:nth-child(4)",
+            properties: {
+              selector: "#mw-content-text > div.gtw-card.item-card > div:nth-child(4)",
+              trim: false,
+              convert: x => x.replace(/This/g,",This").split(",").slice(1)
+            },
             sprite: {
               selector: "div.card-header .growsprite > img",
               attr: "src"
@@ -46,6 +54,9 @@ module.exports.itemInfo = itemname => {
     });
 }
 
+/**
+ * @param {String} input - Always checking for first char then keyword itself.
+ */
 module.exports.search = input => {
 
   const args = [input];

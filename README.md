@@ -54,7 +54,7 @@ growapi.search("ancestral").then(data => {
 
 }).catch(err => {
     console.log(err);
-})
+});
 ```
 
 - **Server Status**

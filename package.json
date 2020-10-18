@@ -1,6 +1,6 @@
 {
   "name": "growapi",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "An unofficial Growtopia API.",
   "keywords": [
     "growtopia",
@@ -14,7 +14,7 @@
   "author": "AykutSarac",
   "license": "MIT",
   "dependencies": {
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "scrape-it": "^5.2.4"
   },
   "repository": {

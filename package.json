@@ -1,7 +1,7 @@
 {
   "name": "growapi",
-  "version": "0.0.5",
-  "description": "An unofficial Growtopia API.",
+  "version": "0.0.6",
+  "description": "An unofficial Growtopia API to gather item informations, name matches & sprites",
   "keywords": [
     "growtopia",
     "gtapi",
@@ -14,7 +14,8 @@
   "author": "AykutSarac",
   "license": "MIT",
   "dependencies": {
-    "node-fetch": "^2.6.1",
+    "axios": "^0.21.1",
+    "moment-timezone": "^0.5.32",
     "scrape-it": "^5.2.4"
   },
   "repository": {

@@ -1,29 +1,36 @@
 {
-  "name": "growapi",
-  "version": "0.0.6",
-  "description": "An unofficial Growtopia API to gather item informations, name matches & sprites",
+  "name": "growtopia-api",
+  "version": "1.0.0",
+  "description": "An unofficial Growtopia API to gather item informations, name matches, sprites and server status.",
   "keywords": [
     "growtopia",
-    "gtapi",
+    "growtopia api",
     "growapi"
   ],
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --config jestconfig.json",
+    "build": "tsc"
   },
-  "author": "AykutSarac",
+  "author": "Growtopian-Bot",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.21.1",
-    "moment-timezone": "^0.5.32",
-    "scrape-it": "^5.2.4"
+    "cheerio": "*",
+    "moment-timezone": "^0.5.32"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:AykutSarac/growapi.git"
+    "url": "git+ssh://git@github.com:Growtopian-Bot/growtopia-api.git"
   },
   "bugs": {
-    "url": "https://github.com/AykutSarac/growapi/issues"
+    "url": "https://github.com/Growtopian-Bot/growtopia-api/issues"
   },
-  "homepage": "https://github.com/AykutSarac/growapi#readme"
+  "homepage": "https://github.com/Growtopian-Bot/growtopia-api#readme",
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "jest": "^27.0.4",
+    "ts-jest": "^27.0.3"
+  },
+  "files": ["lib/**/*"]
 }

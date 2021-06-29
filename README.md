@@ -1,35 +1,26 @@
-# growapi
-[![Patreon](https://camo.githubusercontent.com/93e5d9cc433f49122b0b4ea81910cc91ed82aef9/68747470733a2f2f696f6e69636162697a61752e6769746875622e696f2f6261646765732f70617472656f6e2e737667)](https://www.patreon.com/phemus) [![npm version](https://badge.fury.io/js/growapi.svg)](https://badge.fury.io/js/growapi)  [![GitHub license](https://img.shields.io/github/license/AykutSarac/growapi)](https://github.com/AykutSarac/growapi/blob/master/LICENSE)  [![Build Status](https://img.shields.io/badge/build-passing-green)](https://github.com/AykutSarac/growapi)  ![npm](https://img.shields.io/npm/dt/growapi)
+# Growtopia API
 
+[![NPM](https://nodei.co/npm/growtopia-api.png)](https://nodei.co/npm/growtopia-api/)
 
-[![NPM](https://nodei.co/npm/growapi.png)](https://nodei.co/npm/growapi/)
+[![npm version](https://badge.fury.io/js/growtopia-api.svg)](https://badge.fury.io/js/growtopia-api) [![GitHub license](https://img.shields.io/github/license/Growtopian-Bot/growtopia-api)](https://github.com/Growtopian-Bot/growtopia-api/blob/master/LICENSE) [![Build Status](https://img.shields.io/badge/build-passing-green)](https://github.com/Growtopian-Bot/growtopia-api) ![npm](https://img.shields.io/npm/dt/growtopia-api)
 
-  
-
-> An unofficial Growtopia API for searching item information, server status and more...
-
-  
+> Unofficial Growtopia API for searching item information, server status and gathering item sprites...
 
 ## :cloud: Installation
 
 ```sh
-
-npm install --save growapi
-
+npm install growtopia-api
 ```
-
-  
 
 ## :clipboard: Example
 
--  **Searching Item Information**
+- **Searching Item Information**
 
 ```js
+const { itemInfo } = require("growtopia-api");
 
-growapi.itemInfo("angel").then(item => {
-    console.log(item);
-
-    /*
+itemInfo("angel").then(console.log);
+/*
     Example output:
 
     {
@@ -46,77 +37,66 @@ growapi.itemInfo("angel").then(item => {
     }
 
     */
-
-}).catch(error => {
-    //   Handle Error
-    console.error(error);
-});
-
 ```
 
-  
--  **Searching item names matching with keyword**
-
+- **Searching item names matching with keyword**
 
 ```js
+const { searchItem } = require("growtopia-api");
 
-growapi.search("angel").then(data => {
+searchItem("angel").then(console.log);
 
-    console.log(data);
-
-    /*
+/*
     Returns an Array in following structure:
     e.g:
 
     [
       {
-        name: 'Angelic Heart Cloud',
+        itemName: 'Angelic Heart Cloud',
         url: 'https://growtopia.fandom.com/wiki/Angelic_Heart_Cloud'
       },
       {
-        name: 'Golden Angel Wings',
+        itemName: 'Golden Angel Wings',
         url: 'https://growtopia.fandom.com/wiki/Golden_Angel_Wings'
       }
     ]
 
      */
-
-
-}).catch(error => {
-    //  Handle the error here
-    console.error(error);
-});
-
 ```
 
-  
-
--  **Server Status**
-
-  
+- **Get Item Sprite**
 
 ```js
+const { getImage } = require("growtopia-api");
 
-growapi.server().then(data => {
+getImage("angel").then(console.log);
 
-    console.log(data);
+/*
+    Returns an Array in following structure:
+    e.g:
 
-    /*
+    https://static.wikia.nocookie.net/growtopia/images/8/8f/ItemSprites.png/revision/latest/window-crop/width/32/x-offset/992/y-offset/1920/window-width/32/window-height/32?fill=cb-20201001200938
+
+     */
+```
+
+- **Server Status**
+
+```js
+const { serverStatus } = require("growtopia-api");
+
+serverStatus().then(console.log);
+
+/*
     Example output (returns Object):
 
     {
         date: 'Oct 18',
         time: ' 10:05:36',
-        online: 48966,
-        wotdname: 'HETERODOXY',
-        wotdimage: 'https://www.growtopiagame.com/worlds/heterodoxy.png'
+        playerCount: 48966,
+        wotdName: 'HETERODOXY',
+        wotdURL: 'https://www.growtopiagame.com/worlds/heterodoxy.png'
     }
 
     */
-
-}).catch(error => {
-    //  Handle error
-    console.error(error);
-});
-
 ```

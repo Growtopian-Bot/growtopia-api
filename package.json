@@ -1,6 +1,6 @@
 {
   "name": "growtopia-api",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "An unofficial Growtopia API to gather item informations, name matches, sprites and server status.",
   "keywords": [
     "growtopia",
@@ -32,5 +32,7 @@
     "jest": "^27.0.4",
     "ts-jest": "^27.0.3"
   },
-  "files": ["lib/**/*"]
+  "files": [
+    "lib/**/*"
+  ]
 }

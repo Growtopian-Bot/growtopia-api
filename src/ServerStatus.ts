@@ -1,7 +1,15 @@
 import moment from 'moment-timezone'
 import axios from 'axios'
 
-export async function serverStatus() {
+interface IServerStatus {
+    date: string,
+    time: string,
+    playerCount: number,
+    wotdName: string,
+    wotdURL: string
+}
+
+async function serverStatus(): Promise<IServerStatus> {
     const growtopiaTime = moment().tz("America/New_York");
 
     try {
@@ -22,3 +30,5 @@ export async function serverStatus() {
         throw error;
     }
 }
+
+export default serverStatus

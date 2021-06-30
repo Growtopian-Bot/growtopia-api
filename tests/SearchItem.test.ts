@@ -1,4 +1,4 @@
-const { searchItem } = require("../lib");
+import { searchItem } from "../src";
 
 test('check if function returns item', async () => {
     const items = await searchItem("angel of mercy's wings");

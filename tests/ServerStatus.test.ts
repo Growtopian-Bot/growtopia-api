@@ -1,4 +1,4 @@
-const { serverStatus } = require("../lib");
+import { serverStatus } from "../src";
 
 test('check if function returns item', async () => {
     const obj = await serverStatus();

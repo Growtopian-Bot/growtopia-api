@@ -4,7 +4,11 @@ interface Item {
     title: string
 }
 
-export async function searchItem(itemName: string) {
+interface ISearchItem {
+    [index: number]: { itemName: string, url: string }
+}
+
+async function searchItem(itemName: string): Promise<ISearchItem> {
     try {
         const data = await axios.get("https://growtopia.fandom.com/api.php?action=query&srlimit=20&list=search&srsearch=" + itemName + "&format=json").then(res => res.data)
         if (!data) throw new TypeError("Couldn't find the specified item!");
@@ -36,3 +40,5 @@ function stringContains(string: string, array: string[]): boolean {
     }
     return true;
 }
+
+export default searchItem

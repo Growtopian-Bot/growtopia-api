@@ -5,11 +5,12 @@ interface DataList {
     Description?: string,
     Properties?: string[],
     Sprite?: string,
-    Color?: string,
+    Color?: string[],
     Rarity?: number,
     Recipe?: object,
     Splice?: string,
     Info?: string,
+    Type?: string,
     matches?: string[]
 }
 
@@ -17,7 +18,8 @@ interface Item {
     title: string
 }
 
-export async function itemInfo(nameItem: string) {
+
+async function itemInfo(nameItem: string): Promise<DataList> {
     try {
         const itemList = await axios.get("https://growtopia.fandom.com/api/v1/SearchSuggestions/List?query=" + nameItem).then(res => res.data?.items);
 
@@ -30,31 +32,32 @@ export async function itemInfo(nameItem: string) {
         const $ = cheerio.load(getData);
 
         const Description = $(".card-text").first().text()
-        const Properties = $("#mw-content-text > div > div.gtw-card.item-card > div:nth-child(4)").text()
+        const Properties = $("#mw-content-text > div > div.gtw-card.item-card > div:nth-child(4)").text().trim().split(/[\.+\!]/).filter(d => d !== '')
         const Sprite = $("div.card-header .growsprite > img").attr('src');
-        const Color = $(".seedColor > div").text()
-        const Rarity = $(".card-header b > small").text()
-        const Recipe = $("div.recipebox table.content").first().text().trim().split(/[\r\n\x0B\x0C\u0085\u2028\u2029]+/)
+        const Color = $(".seedColor > div").text().trim()?.split(' ')
+        const Rarity = $(".card-header b > small").text().match(/(\d+)/)
+        const Recipe = $("div.recipebox table.content").first().text().trim().split(/[\r\n\x0B\x0C\u0085\u2028\u2029]+/).map(el => el.trim())
         const Splice = $(".bg-splice").text()
-        const Info = $("#mw-content-text > div > p:nth-child(3)").text()
+        const Info = $("#mw-content-text > div > p:nth-child(3)").text().trim()
+        const Type = $("table.card-field tr:nth-child(1) > td").text().split(" ").pop()
 
-        const dataList: DataList = {};
-        const RecipeHeader = Recipe.shift() || '';
-        if (Description) dataList.Description = Description;
-        if (Recipe && Recipe.length > 0) dataList.Recipe = {
-            type: RecipeHeader,
-            recipe: Recipe
-        }
-        if (Sprite) dataList.Sprite = Sprite;
-        if (Color) dataList.Color = Color;
-        if (Rarity) dataList.Rarity = parseInt(Rarity);
-        if (Splice) dataList.Splice = Splice;
-        if (Info) dataList.Info = Info;
-        if (Properties.replace(/T/g, "\nT").length > 0) dataList.Properties = Properties.split('.')
-
+        const dataList: DataList = {
+            Description,
+            Properties: Properties.length > 0 ? Properties : undefined,
+            Sprite,
+            Color,
+            Rarity: Rarity !== null ? parseInt(Rarity[0]) : undefined,
+            Recipe: Recipe?.length > 0 ? {
+                type: Recipe.shift() || '',
+                recipe: Recipe
+            } : undefined,
+            Splice: Splice?.length > 0 ? Splice : undefined,
+            Info,
+            Type
+        };
 
         if (itemList.length > 1 && nameItem.toLowerCase() !== itemName.toLowerCase()) {
-            const matches = itemList.map((i: Item) => i.title);            
+            const matches = itemList.map((i: Item) => i.title);
             dataList.matches = matches;
         }
 
@@ -64,3 +67,5 @@ export async function itemInfo(nameItem: string) {
         throw error;
     }
 }
+
+export default itemInfo

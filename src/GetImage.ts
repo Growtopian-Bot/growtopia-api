@@ -1,7 +1,7 @@
 import axios from "axios";
 import cheerio from "cheerio";
 
-export async function getImage(input: string) {
+async function getImage(input: string): Promise<string> {
 
     try {
         const itemList = await axios.get("https://growtopia.fandom.com/api/v1/SearchSuggestions/List?query=" + input).then(res => res.data?.items);
@@ -22,3 +22,5 @@ export async function getImage(input: string) {
         throw error;
     }
 }
+
+export default getImage

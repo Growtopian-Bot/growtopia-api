@@ -24,27 +24,27 @@ itemInfo("angel").then(console.log);
     Example output:
 
     {
-      Name: 'Angel Wings',
-      URL: 'https://growtopia.wikia.com/wiki/Angel_Wings',
-      Description: 'Better than a Halo, these will actually let you double jump!',
-      Properties: [ 'This item never drops any seeds', 'This item can be transmuted' ],
-      Sprite: 'https://static.wikia.nocookie.net/growtopia/images/8/8f/ItemSprites.png/revision/latest/window-crop/width/32/x-offset/704/y-offset/1952/window-width/32/window-height/32?fill=cb-20210701082040',
-      Color: [ '#EFEFEF', '#FFFFFF' ],
+      Name: "Angel Wings",
+      URL: "https://growtopia.wikia.com/wiki/Angel_Wings",
+      Description: "Better than a Halo, these will actually let you double jump!",
+      Properties: [ "This item never drops any seeds", "This item can be transmuted" ],
+      Sprite: "https://static.wikia.nocookie.net/growtopia/images/8/8f/ItemSprites.png/revision/latest/window-crop/width/32/x-offset/704/y-offset/1952/window-width/32/window-height/32?fill=cb-20210701082040",
+      Color: [ "#EFEFEF", "#FFFFFF" ],
       Rarity: undefined,
       Recipe: {
-        type: 'Valentine Loot',
+        type: "Valentine Loot",
         recipe: [
-          'It is a possible drop from breaking either a  Heartstone,  Golden Booty Chest, or a  Super Golden Booty Chest or from a  Well of Love every five  Golden Booty Chests filled.'     
+          "It is a possible drop from breaking either a  Heartstone,  Golden Booty Chest, or a  Super Golden Booty Chest or from a  Well of Love every five  Golden Booty Chests filled."     
         ]
       },
       Splice: undefined,
-      Info: "The Angel Wings is an unsplicable back item which was added as part of Valentine's Week 2013.",
-      Type: 'Clothes',
+      Info: "The Angel Wings is an unsplicable back item which was added as part of Valentine"s Week 2013.",
+      Type: "Clothes",
       matches: [
-        'Angel Wings',
-        "Angel of Mercy's Wings",
-        'Angelic Counting Cloud',
-        'Angelic Heart Cloud'
+        "Angel Wings",
+        "Angel of Mercy"s Wings",
+        "Angelic Counting Cloud",
+        "Angelic Heart Cloud"
       ]
     }
 
@@ -64,12 +64,12 @@ searchItem("angel").then(console.log);
 
     [
       {
-        itemName: 'Angelic Heart Cloud',
-        url: 'https://growtopia.fandom.com/wiki/Angelic_Heart_Cloud'
+        itemName: "Angelic Heart Cloud",
+        url: "https://growtopia.fandom.com/wiki/Angelic_Heart_Cloud"
       },
       {
-        itemName: 'Golden Angel Wings',
-        url: 'https://growtopia.fandom.com/wiki/Golden_Angel_Wings'
+        itemName: "Golden Angel Wings",
+        url: "https://growtopia.fandom.com/wiki/Golden_Angel_Wings"
       }
     ]
 
@@ -103,11 +103,11 @@ serverStatus().then(console.log);
     Example output (returns Object):
 
     {
-        date: 'Oct 18',
-        time: ' 10:05:36',
+        date: "Oct 18",
+        time: " 10:05:36",
         playerCount: 48966,
-        wotdName: 'HETERODOXY',
-        wotdURL: 'https://www.growtopiagame.com/worlds/heterodoxy.png'
+        wotdName: "HETERODOXY",
+        wotdURL: "https://www.growtopiagame.com/worlds/heterodoxy.png"
     }
 
     */

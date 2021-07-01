@@ -45,7 +45,7 @@ async function itemInfo(nameItem: string): Promise<DataList> {
 
         const dataList: DataList = {
             Name: itemName,
-            URL: link,
+            URL: link.replace(/ /g, "_"),
             Description,
             Properties: Properties.length > 0 ? Properties : undefined,
             Sprite,

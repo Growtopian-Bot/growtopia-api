@@ -2,6 +2,7 @@ import axios from "axios";
 import cheerio from "cheerio";
 
 interface DataList {
+    Name: string,
     Description?: string,
     Properties?: string[],
     Sprite?: string,
@@ -36,12 +37,13 @@ async function itemInfo(nameItem: string): Promise<DataList> {
         const Sprite = $("div.card-header .growsprite > img").attr('src');
         const Color = $(".seedColor > div").text().trim()?.split(' ')
         const Rarity = $(".card-header b > small").text().match(/(\d+)/)
-        const Recipe = $("div.recipebox table.content").first().text().trim().split(/[\r\n\x0B\x0C\u0085\u2028\u2029]+/).map(el => el.trim())
+        const Recipe = $(".recipebox table.content").last().text().trim().split(/[\r\n\x0B\x0C\u0085\u2028\u2029]+/).map(el => el.trim())
         const Splice = $(".bg-splice").text()
         const Info = $("#mw-content-text > div > p:nth-child(3)").text().trim()
         const Type = $("table.card-field tr:nth-child(1) > td").text().split(" ").pop()
 
         const dataList: DataList = {
+            Name: itemName,
             Description,
             Properties: Properties.length > 0 ? Properties : undefined,
             Sprite,
@@ -64,7 +66,8 @@ async function itemInfo(nameItem: string): Promise<DataList> {
         return dataList;
 
     } catch (error) {
-        throw error;
+        if (error instanceof TypeError) throw error
+        throw error?.response;
     }
 }
 

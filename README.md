@@ -24,16 +24,28 @@ itemInfo("angel").then(console.log);
     Example output:
 
     {
-    itemdesc: 'Better than a Halo, these will actually let you double jump!',
-    itemprops: 'This item never drops any seeds.This item can be transmuted.',
-    itemimage: 'https://static.wikia.nocookie.net/growtopia/images/8/8f/ItemSprites.png/revision/latest/window-crop/width/32/x-offset/992/y-offset/1920/window-width/32/window-height/32?fill=cb-20201001200938',
-    itemrarity: '',
-    itemrecipe: [
-        'Valentine Loot',
-        'It is a possible drop from breaking either a  Heartstone or a  Golden Booty Chest.'
-    ],
-    itemsplice: '',
-    itemexinfo: "The Angel Wings is an unsplicable back item which was added as part of Valentine's Week 2013."
+      Name: 'Angel Wings',
+      URL: 'https://growtopia.wikia.com/wiki/Angel_Wings',
+      Description: 'Better than a Halo, these will actually let you double jump!',
+      Properties: [ 'This item never drops any seeds', 'This item can be transmuted' ],
+      Sprite: 'https://static.wikia.nocookie.net/growtopia/images/8/8f/ItemSprites.png/revision/latest/window-crop/width/32/x-offset/704/y-offset/1952/window-width/32/window-height/32?fill=cb-20210701082040',
+      Color: [ '#EFEFEF', '#FFFFFF' ],
+      Rarity: undefined,
+      Recipe: {
+        type: 'Valentine Loot',
+        recipe: [
+          'It is a possible drop from breaking either a  Heartstone,  Golden Booty Chest, or a  Super Golden Booty Chest or from a  Well of Love every five  Golden Booty Chests filled.'     
+        ]
+      },
+      Splice: undefined,
+      Info: "The Angel Wings is an unsplicable back item which was added as part of Valentine's Week 2013.",
+      Type: 'Clothes',
+      matches: [
+        'Angel Wings',
+        "Angel of Mercy's Wings",
+        'Angelic Counting Cloud',
+        'Angelic Heart Cloud'
+      ]
     }
 
     */

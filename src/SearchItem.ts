@@ -11,7 +11,7 @@ interface ISearchItem {
 async function searchItem(itemName: string): Promise<ISearchItem | undefined> {
     try {
         const data = await axios.get("https://growtopia.fandom.com/api.php?action=query&srlimit=20&list=search&srsearch=" + itemName + "&format=json").then(res => res.data)
-        if (!data) return undefined;
+        if (!data) return [];
 
         const filter = (item: Item) => stringContains(item.title, ['category:', 'update', 'disambiguation', 'week']) && item.title.toLowerCase().includes(itemName);
         const itemList = data.query.search;

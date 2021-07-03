@@ -8,7 +8,7 @@ interface ISearchItem {
     [index: number]: { itemName: string, url: string }
 }
 
-async function searchItem(itemName: string): Promise<ISearchItem | undefined> {
+async function searchItem(itemName: string): Promise<ISearchItem> {
     try {
         const data = await axios.get("https://growtopia.fandom.com/api.php?action=query&srlimit=20&list=search&srsearch=" + itemName + "&format=json").then(res => res.data)
         if (!data) return [];

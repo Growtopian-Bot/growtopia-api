@@ -27,7 +27,7 @@ async function serverStatus(): Promise<IServerStatus> {
         }
 
     } catch (error) {
-        throw error;
+        throw error?.response;
     }
 }
 

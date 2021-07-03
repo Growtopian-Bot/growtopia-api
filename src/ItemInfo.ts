@@ -21,11 +21,11 @@ interface Item {
 }
 
 
-async function itemInfo(nameItem: string): Promise<DataList> {
+async function itemInfo(nameItem: string): Promise<DataList | undefined> {
     try {
         const itemList = await axios.get("https://growtopia.fandom.com/api/v1/SearchSuggestions/List?query=" + nameItem).then(res => res.data?.items);
 
-        if (itemList.length === 0) throw TypeError("Couldn't find the specified item!");
+        if (itemList.length === 0) return undefined;
 
         const itemName = itemList[0].title;
         const link = `https://growtopia.wikia.com/wiki/${itemName}`;
@@ -68,7 +68,6 @@ async function itemInfo(nameItem: string): Promise<DataList> {
         return dataList;
 
     } catch (error) {
-        if (error instanceof TypeError) throw error
         throw error?.response;
     }
 }

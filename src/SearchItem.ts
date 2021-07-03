@@ -8,10 +8,10 @@ interface ISearchItem {
     [index: number]: { itemName: string, url: string }
 }
 
-async function searchItem(itemName: string): Promise<ISearchItem> {
+async function searchItem(itemName: string): Promise<ISearchItem | undefined> {
     try {
         const data = await axios.get("https://growtopia.fandom.com/api.php?action=query&srlimit=20&list=search&srsearch=" + itemName + "&format=json").then(res => res.data)
-        if (!data) throw new TypeError("Couldn't find the specified item!");
+        if (!data) return undefined;
 
         const filter = (item: Item) => stringContains(item.title, ['category:', 'update', 'disambiguation', 'week']) && item.title.toLowerCase().includes(itemName);
         const itemList = data.query.search;
@@ -26,7 +26,7 @@ async function searchItem(itemName: string): Promise<ISearchItem> {
 
         return result;
     } catch (error) {
-        throw error;
+        throw error?.response;
     }
 }
 

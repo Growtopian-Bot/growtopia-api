@@ -15,7 +15,7 @@ async function getImage(input: string): Promise<string | undefined> {
         const $ = cheerio.load(getData);
 
         const Sprite = $("div.card-header .growsprite > img").attr('src');
-        if (!Sprite) throw TypeError("Couldn't find the sprite for this item!");
+        if (!Sprite) return undefined;
 
         return Sprite;
     } catch (error) {

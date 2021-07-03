@@ -3,6 +3,7 @@ import cheerio from "cheerio";
 
 interface DataList {
     Name: string,
+    URL: string,
     Description?: string,
     Properties?: string[],
     Sprite?: string,
@@ -44,6 +45,7 @@ async function itemInfo(nameItem: string): Promise<DataList> {
 
         const dataList: DataList = {
             Name: itemName,
+            URL: link.replace(/ /g, "_"),
             Description,
             Properties: Properties.length > 0 ? Properties : undefined,
             Sprite,

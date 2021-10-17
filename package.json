@@ -1,6 +1,6 @@
 {
   "name": "growtopia-api",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "An unofficial Growtopia API to gather item informations, name matches, sprites and server status.",
   "keywords": [
     "growtopia",

@@ -4,13 +4,14 @@ interface Item {
     title: string
 }
 
-interface ISearchItem {
-    [index: number]: { itemName: string, url: string }
+interface SearchItem {
+    itemName: string;
+    url: string;
 }
 
-async function searchItem(itemName: string): Promise<ISearchItem> {
+async function searchItem(itemName: string): Promise<SearchItem[]> {
     try {
-        const data = await axios.get("https://growtopia.fandom.com/api.php?action=query&srlimit=20&list=search&srsearch=" + itemName + "&format=json").then(res => res.data)        
+        const data = await axios.get("https://growtopia.fandom.com/api.php?action=query&srlimit=20&list=search&srsearch=" + itemName + "&format=json").then(res => res.data)
         if (!data) return [];
 
         const filter = (item: Item) => stringContains(item.title, ['category:', 'update', 'disambiguation', 'week']) && item.title.toLowerCase().includes(itemName);
@@ -26,7 +27,11 @@ async function searchItem(itemName: string): Promise<ISearchItem> {
 
         return result;
     } catch (error) {
-        throw error?.response;
+        if (axios.isAxiosError(error)) {
+            throw error.response;
+        } else {
+            throw error;
+        }
     }
 }
 
@@ -34,7 +39,7 @@ function stringContains(string: string, array: string[]): boolean {
     for (let i = 0; i < array.length; i++) {
         if (string.toLowerCase().includes(array[i])) {
             console.log(string);
-            
+
             return false;
         }
     }

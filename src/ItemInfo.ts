@@ -9,7 +9,10 @@ interface DataList {
     Sprite?: string,
     Color?: string[],
     Rarity?: number,
-    Recipe?: object,
+    Recipe?: {
+        type: string;
+        recipe: string[];
+    },
     Splice?: string,
     Info?: string,
     Type?: string,
@@ -68,7 +71,11 @@ async function itemInfo(nameItem: string): Promise<DataList | undefined> {
         return dataList;
 
     } catch (error) {
-        throw error?.response;
+        if (axios.isAxiosError(error)) {
+            throw error?.response;
+        } else {
+            throw error;
+        }
     }
 }
 

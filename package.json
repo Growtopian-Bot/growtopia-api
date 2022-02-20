@@ -15,7 +15,7 @@
   "author": "Growtopian-Bot",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.26.0",
     "cheerio": "*",
     "moment-timezone": "^0.5.32"
   },
@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/Growtopian-Bot/growtopia-api#readme",
   "devDependencies": {
-    "@types/jest": "^26.0.23",
+    "@types/jest": "^27.4.0",
     "jest": "^27.0.4",
     "ts-jest": "^27.0.3"
   },
